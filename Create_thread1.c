@@ -1,6 +1,7 @@
+// C program to create thread using pthread 
 #include <stdio.h>
 #include <unistd.h>
-#include <pthread.h>
+#include <pthread.h>//Header file for pthread
 
 void *sum()
 {
@@ -18,7 +19,6 @@ int main()
     // resources are not available to create thread
     if(pthread_create(&th1,NULL,sum,NULL) != 0)// Creating thread1
     {
-        
         return 1;
     }
     if(pthread_create(&th2,NULL,sum,NULL) != 0) // Creating thread2
