@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <pthread.h>
+#include <stdio.h> //Header file for input and output
+#include <unistd.h>//Header file that provides access to the POSIX operating system API.
+#include <pthread.h> //Header file for pthread
 
-pthread_mutex_t mutex;
+pthread_mutex_t mutex;/*pthread_mutex_t is a data type in the POSIX threads library that represents a mutex, or mutual exclusion object. A mutex is a synchronization mechanism that is used to protect shared resources from concurrent access by multiple threads.*/
 int mails =0;
 void *sum()
 {
@@ -15,20 +15,20 @@ void *sum()
         // increment
         // write mails
     }
-    return NULL;
+    pthread_exit(NULL); // Here NULL passing because returning nothing
 }
 
 int main()
 {
     pthread_t th[4]; //Thread declaration of type pthread_t
-    pthread_mutex_init(&mutex,NULL);
+    pthread_mutex_init(&mutex,NULL); //function call that initializes a mutex object referenced by the mutex variable using default attributes.
     printf("-->> Before thread\n");
     // I am putting it into if condition beacuse sometimes it may be possible that
     // resources are not available to create thread
     int i;
     for(i = 0; i < 4; i++)
     {
-        if(pthread_create(&th[i],NULL,sum,NULL) != 0)// Creating thread1
+        if(pthread_create(&th[i],NULL,&sum,NULL) != 0)// Creating thread1
         {
             perror("Failed to create thread\n");
             return 1;
