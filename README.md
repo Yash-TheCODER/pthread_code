@@ -1,1 +1,1 @@
-#READ ME
+#READ ME It is a c code to create multiple thread using loop
